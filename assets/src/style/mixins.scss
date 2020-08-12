@@ -1,0 +1,114 @@
+@mixin col {
+  @media (max-width: 576px) {
+    @content;
+  }
+}
+
+@mixin sm {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin md-minus {
+  @media (max-width: 991px) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (max-width: 992px) {
+    @content;
+  }
+}
+
+@mixin lg-minus {
+  @media (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin extra {
+  @media (max-width: 1400px) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+
+@mixin font ($font-family, $font-size, $color) {
+  font-family: $font-family;
+  font-size: $font-size;
+  color: $color;
+}
+
+@mixin dropdown {
+  &.show {
+    .btn {
+      img {
+        transform: rotateX(180deg);
+      }
+    }
+  }
+
+  .btn {
+    @include font('productSans-Black', 24px, $black);
+    padding: 0;
+    position: relative;
+    width: 100%;
+    text-align: left;
+
+    img {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%), rotateX(0);
+      transition: transform .3s ease-in-out;
+    }
+
+    &::after {
+      display: none;
+    }
+  }
+
+  &-menu {
+    transform: scale(0) !important;
+    transition: all ease-out 0.2s;
+    top: 100px;
+    display: block;
+
+    &.show {
+      transform: scale(1) !important;
+      top: 50px !important;
+      border-color: $border;
+    }
+  }
+}
+
+@mixin ellipsis ($line) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+@mixin fontSize {
+  font-size: 18px;
+
+  @include extra {
+    font-size: 16px;
+  }
+}
